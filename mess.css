@@ -1,0 +1,104 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: gray;
+    user-select: none;
+}
+
+header {
+    background-color: white;
+    padding: 10px 20px;
+    color: white;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.mess-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    max-width: 800px;
+margin: 20px auto;
+padding: 20px;
+border: 1px solid black;
+text-align: center;
+}
+
+.mess {
+    margin-left: 60px;
+    margin-top: 100px;
+    width: 500px;
+    height: 350px;  
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+    backdrop-filter: blur(2px);
+    border-radius: 10px;
+}
+.mess:hover{
+    border-radius: 10px;
+    border: 3px solid brown;
+    background: gray;
+}
+.info{
+    align-self: center;
+    margin-top: -300px;
+    margin-left: 700px;
+}
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top:200px;
+}
+
+.mess-list h1 {
+    margin-bottom: 10px;
+}
+
+.mess-list p {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+ 
+.list2{
+  margin-top: 280px;
+}
+
+#map {
+    height: 400px;
+    width: 100%;
+    margin-top: 20px;
+}
+img{
+    height: 350px;
+    width: 500px;
+}

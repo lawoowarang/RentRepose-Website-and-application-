@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike Rent</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: white;
+            user-select: none;
+        }
+        header {
+            background-color: grey;
+            color: black;
+            padding: 1em;
+            text-align: center;
+        }
+        h2 {
+            margin-top: -10px;
+            margin-left: 40px;
+        }
+        .box-img {
+            margin-top: 0px;
+            margin-left: 40px;
+        }
+        .box-content {
+            border: 2px solid black;
+            height: 200px;
+            width: 400px;
+            background-color: transparent;
+            border-radius: 8px;
+            padding: 20px 0 15px;
+            margin-top: 50px;
+            margin-left: auto;
+            margin-right: auto;
+            justify-content: space-evenly;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .box-content:nth-child(even) {
+            margin-top: 50px;
+        }
+        img {
+            height: 160px;
+            width: 300px;
+        }
+        footer {
+            background-color: black;
+            color: grey;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 28px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        /* Modal styles */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: none; 
+            padding-top: 60px; 
+        }
+        .modal-content {
+            background-color: white;
+            color: black;
+            margin: 5% auto; 
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; 
+            max-width: 500px;
+            border-radius: 8px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: red;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+        <header>
+        <h1>Vehicle Rental Service</h1>
+    </header>
+    <main class="container">
+        <div class="box">
+            <div class="box-content" onclick="showDetails('Vinayak Rental Service', 10, 'Vinayak Korgaonkar', '9857313440')">
+                <h2>1</h2>
+                <div class="box-img">
+                    <img src="bike1.jpg" alt="bike1">
+                </div>
+            </div>
+            <div class="box-content" onclick="showDetails('Pravin Enterprices', 25, 'Pravin Desai', '7058333641')">
+                <h2>2</h2>
+                <div class="box-img">
+                    <img src="bike2.jpg" alt="bike2">
+                </div>
+            </div>
+            <div class="box-content" onclick="showDetails('---', '---', '---', '---')">
+                <h2>3</h2>
+                <div class="box-img">
+                    <img src="bike3.jpg" alt="bike3">
+                </div>
+            </div>
+            <div class="box-content" onclick="showDetails('Vinayak Rental Service', 10, 'Vinayak Korgaonkar', '9857313440')">
+                <h2>4</h2>
+                <div class="box-img">
+                    <img src="bike4.jpg" alt="bike4">
+                </div>
+            </div>
+            <div class="box-content" onclick="showDetails('Pravin Enterprices', 25, 'Pravin Desai', '7058333641')">
+                <h2>5</h2>
+                <div class="box-img">
+                    <img src="bike5.jpg" alt="bike5">
+                </div>
+            </div>
+            <div class="box-content" onclick="showDetails('---', '---', '---', '---')">
+                <h2>6</h2>
+                <div class="box-img">
+                    <img src="bike6.jpg" alt="bike6">
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>
+            © 2024, RentRepose.liveblog365.com, Inc. or its affiliates</p>
+    </footer>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p id="modal-text"></p>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function showDetails(serviceName, rate, ownerName, mobile) {
+            const modal = document.getElementById("myModal");
+            const modalText = document.getElementById("modal-text");
+            modalText.innerHTML = `
+                <strong>Service name:</strong> ${serviceName}<br>
+                <strong>Rate per hour:</strong> ${rate}₹<br>
+                <strong>Owner Name:</strong> ${ownerName}<br>
+                <strong>Mobile No.:</strong> ${mobile}
+            `;
+            modal.style.display = "block";
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+
+        // Close the modal when the user clicks anywhere outside of the modal
+        window.onclick = function(event) {
+            const modal = document.getElementById("myModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

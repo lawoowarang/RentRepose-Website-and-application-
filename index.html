@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PG Finder Main Dashboard</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #2c3e50; /* Dark background */
+            color: #ecf0f1;
+            line-height: 1.6;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: #1a252f;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+            height: 3.4rem;
+        }
+
+        .navbar img {
+            border-radius: 10px;
+            height: 2.8rem;
+        }
+
+        .navbar img:hover {
+            transform: scale(1.1);
+        }
+
+        .navbar .logo a {
+            font-size: 1.8rem;
+            color: #ffffff;
+            text-decoration: none;
+            background-image: linear-gradient(to right, #3498db, #2ecc71);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-left: -32rem;
+        }
+
+        .navbar .logo a:hover {
+            background-image: linear-gradient(to right, #2980b9, #27ae60);
+        }
+
+        .navMenu {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .navMenu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .navMenu a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* Welcome Section */
+        .content {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+        }
+
+        .welcome {
+            font-size: 3rem;
+            margin-top: -16rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ffffff;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .info {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -60%);
+            color: #ecf0f1;
+            font-size: 1.2rem;
+        }
+
+        /* Panels */
+        .panel-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-left: 10rem;
+            gap: 3rem;
+            padding: 3rem;
+        }
+
+        .head-panel {
+            background-color: #34495e; /* Dark panel background */
+            color: #ecf0f1;
+            padding: 1rem;
+            border-radius: 10px;
+            width: calc(33% - 2rem);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, color 0.3s;
+            text-align: center;
+        }
+
+        .head-panel:hover {
+            background-color: #3498db;
+            color: #ffffff;
+        }
+
+        .head-panel img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+
+        .head-panel a {
+            color: inherit;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .head-panel a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a252f;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        footer .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer ul p {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        footer ul li, footer ul a {
+            color: white;
+            margin: 0.5rem 0;
+            text-decoration: none;
+            transition: color 0.3s ease-in-out;
+        }
+
+        footer ul a:hover {
+            color: #3498db;
+        }
+
+        footer .footer-bottom {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #3498db;
+        }
+
+        /* Popup */
+        .pop-up {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 20em;
+            height: 11em;
+            background-color: #3498db;
+            border-radius: 10px;
+            border: 2px solid #2ecc71;
+            transform: translate(-50%, -50%);
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.5s;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, .30);
+            z-index: 1000;
+            text-align: center;
+            padding: 0.5rem;
+        }
+
+        .pop-up h3 {
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .pop-up input {
+            background-color: #2ecc71;
+            color: #3498db;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .pop-up input:hover {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .page#wholepg.active {
+            filter: blur(10px);
+            pointer-events: none;
+        }
+
+        #popup.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        @keyframes appear {
+            from{
+                opacity: 0;
+                scale: 0.4;
+            }
+            to{
+                opacity: 1;
+                scale: 1;
+            }
+        }
+        .block{
+            margin-left: -10rem;
+            animation: appear 5s linear;
+            animation-timeline: view();
+            animation-range: entry 0% cover 50%;
+        }
+    </style>
+    <script>
+        function toggle() {
+            var blur = document.getElementById('wholepg');
+            blur.classList.toggle('active');
+            var popup = document.getElementById('popup');
+            popup.classList.toggle('active');
+        }
+        var url = "http://colormind.io/api/";
+var data = {
+	model : "default",
+	input : [[44,43,44],[90,83,82],"N","N","N"]
+}
+
+var http = new XMLHttpRequest();
+
+http.onreadystatechange = function() {
+	if(http.readyState == 4 && http.status == 200) {
+		var palette = JSON.parse(http.responseText).result;
+	}
+}
+
+http.open("POST", url, true);
+http.send(JSON.stringify(data));
+    </script>
+</head>
+<body>
+    <div class="pop-up" id="popup">
+        <h3>Please kindly Login or Register to Unlock this feature.</h3>
+        <h3>Thank You!!</h3>
+        <input type="button" value="OK" onclick="toggle()">
+    </div>
+    <div class="page" id="wholepg">
+        <div class="navbar">
+            <img src="logo.png" alt="logo">
+            <h2 class="logo"><a href="#" class="logoHover">RentRepose</a></h2>
+            <ul class="navMenu">
+                <li><a href="login.php">Login</a></li>
+                <li><a href="register.php">Register</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <img src="front.png" alt="backdrop">
+            <h1 class="welcome">Welcome</h1>
+            
+        </div><div class="block">
+        <div class="panel-container">
+            <div class="head-panel">
+                <h3>PG only for Boys:</h3>
+                <img src="demopg.jpg" alt="PG for Boys">
+                <p><a href="#" onclick="toggle()">See this</a></p>
+            </div>
+            <div class="head-panel">
+                <h3>PG only for Girls:</h3>
+                <img src="samplepg2.jpg" alt="PG for Girls">
+                <p><a href="#" onclick="toggle()">See this</a></p>
+            </div>
+            <div class="head-panel">
+                <h3>PG for both:</h3>
+                <img src="demopg.jpg" alt="PG for Both">
+                <p><a href="#" onclick="toggle()">See this</a></p>
+            </div>
+        </div></div>
+        <footer>
+            <div class="footer-content">
+                <ul>
+                    <p>Our team</p>
+                    <li>Lawoo Mahesh Warang</li>
+                    <li>Janu Vitthal Kharat</li>
+                    <li>Elvis Robert Fernandes</li>
+                    <li>Yash Ravindranath Gosavi</li>
+                </ul>
+                <ul>
+                    <p>Roles played</p>
+                    <li>Developer/Tester</li>
+                    <li>Sales Manager/Developer</li>
+                    <li>Tester</li>
+                    <li>Report Manager</li>
+                </ul>
+                <ul>
+                    <p>Id no</p>
+                    <li>2217420004</li>
+                    <li>2217420005</li>
+                    <li>2217420006</li>
+                    <li>2217420007</li>
+                </ul>
+                <ul>
+                    <p>Contact us</p>
+                    <li><a href="contact.html">apnalocalpg2425ty@gmail.com</a></li>
+                    <li>Computer Department</li>
+                    <li>Yashwantrao Bhonsale Institute of Technology</li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <b>RentRepose</b>
+                <p>This is a website made for educational purposes.</p>
+                <p>&copy; 2024, RentRepose.liveblog365.com, Inc. or its affiliates</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Rental</title>
+    <style>body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: white; /* Light gray background */
+        user-select: none;
+    }
+    
+    header {
+        background-color: grey; /* Dark gray background */
+        color: black; /* White text */
+        padding: 1rem;
+        text-align: center;
+        transition: background-color 0.3s, color 0.3s;
+    }
+    
+    main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2em;
+    }
+    
+    #rental-form, #rental-form1 {
+        background-color: black; /* White background */
+        border-radius: 10px;
+        border: 2px solid grey;
+        padding: 2em;
+        margin-bottom: 2em;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        width: 30%;
+    }
+    
+    #rental-form h2, #rental-form1 h2 {
+        margin-top: 0;
+        color: white; /* Dark gray text */
+    }
+    
+    #rental-form form, #rental-form1 form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    #rental-form label, #rental-form1 label {
+        margin-bottom: 0.5em;
+        color: white; /* Medium gray text */
+    }
+    
+    #rental-form input, #rental-form select, #rental-form1 input, #rental-form1 select {
+        margin-bottom: 1em;
+        padding: 0.5em;
+        border: 1px solid #ced4da; /* Light gray border */
+        border-radius: 0.25em;
+        width: 90%;
+    }
+    
+    #rental-form button, #rental-form1 button {
+        background-color: #0056b3; /* Blue background */
+        color: #fff; /* White text */
+        padding: 0.5em 1em;
+        border: none;
+        border-radius: 0.25em;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-top: 1.2em;
+        width: 50%;
+    }
+    
+    #rental-form button:hover, #rental-form1 button:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+    }
+    
+    #vehicle-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    #vehicle-list li {
+        margin-bottom: 1em;
+        color: #343a40; /* Dark gray text */
+    }
+    
+    h4 {
+        margin-left: 20px;
+        margin-top: 20px;
+        color: #343a40; /* Dark gray text */
+    }
+    
+    footer {
+        background-color: black; /* Dark gray background */
+        color: grey; /* White text */
+        text-align: center;
+        padding: 10px 0;
+        margin-top: 0.4em;
+    }</style>
+</head>
+<body>
+    <header>
+        <h1>Vehicle Rent & Book</h1>
+    </header>
+    <main>
+        <section id="rental-form">
+            <h2>Rent Vehicle</h2>
+            <form name="frm" action="" method="post" target="_self">
+                <label for="vehicle">Vehicle Type:</label>
+                <select id="vehicle" name="vehicle">
+                    <option value="carent.html">Car</option>
+                    <option value="bikerent.html">Bike</option>
+                </select>
+                <button type="submit" onclick="selecteditem()">Rent</button>
+            </form>
+        </section>
+        <section id="rental-form1">
+            <h2>Book Vehicle</h2>
+            <form name="frm1" action="" method="post" target="_self">
+                <label for="vehicle">Vehicle Type:</label>
+                <select id="vehicleb" name="vehicleb">
+                    <option value="rkpk.html">Rickshaw</option>
+                    <option value="mbmpk.html">Bus/minibus</option>
+                    <option value="tktpk.html">Tempo/Truck</option>
+                </select>
+                <button type="submit" onclick="selecteditem1()">Book</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>© 2024, RentRepose.liveblog365.com, Inc. or its affiliates</p>
+    </footer>
+    <script type="text/javascript">
+        function selecteditem(){
+            var dropdown = document.getElementById("vehicle");
+            var selectedValue = dropdown.options[dropdown.selectedIndex].value;
+            window.open(selectedValue);
+        }
+        function selecteditem1(){
+            var dropdown = document.getElementById("vehicleb");
+            var selectedValue = dropdown.options[dropdown.selectedIndex].value;
+            window.open(selectedValue);
+        }
+    </script>
+</body>
+</html>
